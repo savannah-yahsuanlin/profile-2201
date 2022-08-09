@@ -18,7 +18,6 @@
     "test:dev:routes": "npm run test:dev -- --grep=route"
   },
   "author": "Savannah Lin",
-  "license": "MIT",
   "dependencies": {
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
