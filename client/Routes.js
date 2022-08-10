@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
 import Home from './components/Home';
-import Update from './components/Update';
+import UpdateProfile from './components/UpdateProfile';
 import {loadUsers, loadWorks, loadSchools} from './store'
 import {Copyright} from './components/Copyright';
 import Works from './components/Works';
@@ -22,10 +22,17 @@ class Routes extends Component {
 
     return (
       <div>
-        <Home/>
-        <Works/>
-        <Schools/>
-        <Copyright/>
+        <Switch> 
+          <Route>
+            <Home/>
+            <Switch>
+              <Route exact path='/:id/edit' component={UpdateProfile}/>
+            </Switch>
+            <Works/>
+            <Schools/>
+            <Copyright/>
+          </Route>
+        </Switch>
       </div>
     )
   }

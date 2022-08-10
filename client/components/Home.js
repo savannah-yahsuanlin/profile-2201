@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -51,7 +52,7 @@ export const Home = (props) => {
           {users.map((ele) => (
             <Box
               sx={{ px: 6, display: "flex", flexDirection: "column" }}
-              key={ele}
+              key={ele.id}
             >
               <Typography
                 variant="h2"
@@ -59,7 +60,13 @@ export const Home = (props) => {
                 sx={{ fontWeight: "500" }}
               >
                 Hi there, I'm
-                <span style={{ color: "#fdd24d", letterSpacing: "3.578px", fontWeight: '700' }}>
+                <span
+                  style={{
+                    color: "#fdd24d",
+                    letterSpacing: "3.578px",
+                    fontWeight: "700",
+                  }}
+                >
                   {ele.name}
                 </span>
               </Typography>
@@ -93,7 +100,7 @@ export const Home = (props) => {
                   {ele.bio}
                 </Typography>
               )}
-              <Button size="small">Edit</Button>
+              <Button size="small"><Link to={`${ele.id}/edit`}>Edit</Link></Button>
             </Box>
           ))}
         </Box>

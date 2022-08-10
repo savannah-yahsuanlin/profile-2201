@@ -33,7 +33,7 @@ export const updateUser = (user, history) => {
       type: UPDATE_USER,
       user: updateUser,
     });
-    history.push("/users");
+    history.push("/");
   };
 };
 
