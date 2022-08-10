@@ -6,6 +6,9 @@ const Work = db.define('work', {
     type: Sequelize.STRING,
     allowNull: false
   },
+  location: {
+    type: Sequelize.STRING,
+  },
   title: {
     type: Sequelize.STRING,
   },

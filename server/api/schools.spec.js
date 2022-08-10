@@ -2,24 +2,24 @@
 
 const {expect} = require('chai')
 const request = require('supertest')
-const { db, models: { User } } = require('../db')
+const { db, models: { School } } = require('../db')
 const seed = require('../../script/seed');
 const app = require('../app')
 
-describe('User routes', () => {
+describe('School routes', () => {
   beforeEach(async() => {
     await seed();
   })
 
-  describe('GET /api/users', () => {
-      it('Return one user and name equals to Savannah', async () => {
+  describe('GET /api/schools', () => {
+      it('Return 4 schools', async () => {
       const res = await request(app)
-        .get('/api/users')
+        .get('/api/schools')
         .expect(200)
 
       expect(res.body).to.be.an('array');
-      expect(res.body.length).to.equal(1);
-      expect(res.body[0].name).to.be.equal('Savannah')
+      expect(res.body.length).to.equal(4);
+      expect(res.body[0].name).to.be.equal('Fullstack Academy')
       })
     })
 }) // end describe('User routes')

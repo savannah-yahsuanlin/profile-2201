@@ -1,6 +1,6 @@
 'use strict'
 
-const {db, models: {User, Work} } = require('../server/db')
+const {db, models: {User, Work, School} } = require('../server/db')
 
 async function seed() {
   await db.sync({ force: true }) 
@@ -21,6 +21,7 @@ async function seed() {
   const works = await Promise.all([
     Work.create({
       name: "Drone Forward",
+      location: 'Boston',
       title: "Web developer",
       img: "df.webp",
       startDate: "2021-02",
@@ -29,6 +30,7 @@ async function seed() {
     }),
     Work.create({
       name: "STAT",
+      location: 'Boston',
       title: "Front end web developer",
       img: "stat.jpeg",
       startDate: "2019-12",
@@ -37,6 +39,7 @@ async function seed() {
     }),
     Work.create({
       name: "MĀSK Skincare",
+      location: 'New York',
       title: "Web developer and designer",
       img: "mask.jpeg",
       startDate: "2019-06",
@@ -44,7 +47,8 @@ async function seed() {
       link: "https://maskskincare.com/"
     }),
     Work.create({
-      name: "Hemp Garden/IREMIA",
+      name: "IREMIA",
+      location: 'New York',
       title: "Web developer and designer",
       img: "hp.jpeg",
       startDate: "2019-01",
@@ -53,6 +57,7 @@ async function seed() {
     }),
     Work.create({
       name: "SMCAC",
+      location: 'Boston',
       title: "Web developer and designer",
       img: "",
       startDate: "2018-04",
@@ -60,12 +65,36 @@ async function seed() {
       link: "https://smcac.org/default.php"
     }),
   ]);
+
   console.log(`seeded ${works.length} works`);
   console.log(`seeded successfully`);
 
+  const schools = await Promise.all([
+    School.create({ 
+      name: 'Fullstack Academy', 
+      degree: 'Flex Immersive Coding Bootcamp'
+    }),
+    School.create({ 
+      name: 'Northeastern University', 
+      degree: 'Master of Professional Studies in Informatics'
+    }),
+    School.create({ 
+      name: 'Soochow University', 
+      degree: 'Master of Business Administration'
+    }),
+    School.create({ 
+      name: 'Chinese Culture University', 
+      degree: 'Bachelor of Science in Information and Communication'
+    }),
+  ])
+
+  console.log(`seeded ${schools.length} schools`)
+  console.log(`seeded successfully`)
+
   return {
     users,
-    works
+    works,
+    schools
   }
 }
 

@@ -3,9 +3,10 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
 import Home from './components/Home';
 import Update from './components/Update';
-import {loadUsers, loadWorks} from './store'
+import {loadUsers, loadWorks, loadSchools} from './store'
 import {Copyright} from './components/Copyright';
 import Works from './components/Works';
+import Schools from './components/Schools';
 
 /**
  * COMPONENT
@@ -14,6 +15,7 @@ class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData()
     this.props.loadWorks()
+    this.props.loadSchools()
   }
 
   render() {
@@ -22,6 +24,7 @@ class Routes extends Component {
       <div>
         <Home/>
         <Works/>
+        <Schools/>
         <Copyright/>
       </div>
     )
@@ -44,6 +47,9 @@ const mapDispatch = dispatch => {
     },
     loadWorks() {
       dispatch(loadWorks())
+    },
+    loadSchools() {
+      dispatch(loadSchools())
     }
   }
 }
