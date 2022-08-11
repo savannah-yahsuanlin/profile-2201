@@ -8,8 +8,8 @@ import {loadUsers, loadWorks, loadSchools} from './store'
 import {Copyright} from './components/Copyright';
 import Works from './components/Works';
 import Schools from './components/Schools';
+import {Contact} from './components/Contact';
 
-import {Box} from "@mui/material";
 import {
   createTheme,
   responsiveFontSizes,
@@ -43,6 +43,7 @@ class Routes extends Component {
             <Route exact path="/works" component={Works}/>
             <Route path="/works/:id" component={UpdateWork}/>
             <Route path="/schools" component={Schools}/>
+            <Route path='/contact' component={Contact}/>
           </Switch>
           <Copyright/>
         </div>

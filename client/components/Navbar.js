@@ -10,7 +10,8 @@ const Navbar = (props) => (
       <Box sx={{ display: "flex", justifyContent: "space-evenly", mt: 2}}>
         <Link to="/">Home</Link>
         <Link to="/works">Work</Link>
-          <Link to="/schools">School</Link>
+        <Link to="/schools">School</Link>
+        <Link to='/contact'>Contact</Link>
       </Box>
     </nav>
   </div>

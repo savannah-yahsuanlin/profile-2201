@@ -9,8 +9,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 
-export const Home = (props) => {
-  const { users } = props;
+export const Home = ({ users }) => {
   const [isReadMore, setIsReadMore] = useState(true);
   const toggleReadMore = () => {
     setIsReadMore(!isReadMore);

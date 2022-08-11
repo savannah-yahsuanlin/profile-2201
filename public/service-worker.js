@@ -3,11 +3,12 @@ const toCache = [
   '/',
 	'/index.html',
 	'/js/status.js',
-  '/style.css'
+  '/style.css',
+  '/bundle.js',
 ];
 
 
-self.addEventListener('install', function(event) {
+self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(function(cache) {
@@ -17,7 +18,7 @@ self.addEventListener('install', function(event) {
   )
 })
 
-self.addEventListener('fetch', function(event) {
+self.addEventListener('fetch', (event) => {
   event.respondWith(
     fetch(event.request)
       .catch(() => {
@@ -29,7 +30,7 @@ self.addEventListener('fetch', function(event) {
   )
 })
 
-self.addEventListener('activate', function(event) {
+self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys()
       .then((keyList) => {

@@ -12,6 +12,7 @@ import CardActions from "@mui/material/CardActions";
 import Avatar from '@mui/material/Avatar';
 
 const Works = ({ works }) => {
+
   return (
 		<>
       <Grid
@@ -71,7 +72,6 @@ const Works = ({ works }) => {
 };
 
 const mapState = (state) => {
-console.log(state)
   return {
     works: state.works,
   };
