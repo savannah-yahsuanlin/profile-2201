@@ -13,7 +13,7 @@ const Work = db.define('work', {
     type: Sequelize.STRING,
   },
   img: {
-    type: Sequelize.STRING
+    type: Sequelize.TEXT
   },
   startDate: {
     type: Sequelize.DATE

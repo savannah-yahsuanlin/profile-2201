@@ -7,7 +7,7 @@ import history from "../history";
 const LOAD_WORKS = "LOAD_WORKS";
 const DELETE_WORK = "DELETE_WORK";
 const UPDATE_WORK = "UPDATE_WORK";
-const CREATE_WORK = 'CREATE_WORK'
+const CREATE_WORK = "CREATE_WORK";
 
 /**
  * THUNK CREATORS
@@ -27,9 +27,9 @@ export const updateWork = (work, history) => {
     const updatedWork = (await axios.put(`/api/works/${work.id}`, work)).data;
     dispatch({
       type: UPDATE_WORK,
-      product: updatedWork,
+      work: updatedWork,
     });
-    history.push("/");
+    history.push("/works");
   };
 };
 
@@ -40,30 +40,31 @@ export const deleteWork = (work, history) => {
       type: DELETE_WORK,
       work,
     });
-    history.push("/");
+    history.push("/works");
   };
 };
 
 export const createWork = (work) => {
-	return async dispatch => {
-		const newWork = (await axios.post('/api/works', work)).data
-		dispatch({
-			type: CREATE_WORK,
-			work: newWork
-		})
-	}
-}
+  return async (dispatch) => {
+    const newWork = (await axios.post("/api/works", work)).data;
+    dispatch({
+      type: CREATE_WORK,
+      work: newWork,
+    });
+    history.push("/works");
+  };
+};
 
 // REDUCER
 export default function (state = [], action) {
   switch (action.type) {
     case LOAD_WORKS:
       return action.works;
-		case CREATE_WORK:
+    case CREATE_WORK:
       return [...state, action.work];
     case UPDATE_WORK:
       return state.map((work) =>
-        work.id === action.work.id ? action.work.id : work.id
+        work.id !== action.work.id ? work : action.work
       );
     case DELETE_WORK:
       return state.filter((work) => work.id !== action.work.id);

@@ -7,19 +7,7 @@ import Grid from "@mui/material/Grid";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import {
-  createTheme,
-  responsiveFontSizes,
-  ThemeProvider,
-} from "@mui/material/styles";
 
-let theme = createTheme({
-  typography: {
-    fontFamily: "granville, serif",
-  },
-});
-
-theme = responsiveFontSizes(theme);
 
 export const Home = (props) => {
   const { users } = props;
@@ -29,7 +17,6 @@ export const Home = (props) => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
       <Grid
         container
         elevation={0}
@@ -100,12 +87,11 @@ export const Home = (props) => {
                   {ele.bio}
                 </Typography>
               )}
-              <Button size="small"><Link to={`/edit/profile/${ele.id}`}>Edit</Link></Button>
+              <Button size="small"><Link to={`/profile/${ele.id}`}>Edit</Link></Button>
             </Box>
           ))}
         </Box>
       </Grid>
-    </ThemeProvider>
   );
 };
 

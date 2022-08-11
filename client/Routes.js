@@ -8,9 +8,22 @@ import {loadUsers, loadWorks, loadSchools} from './store'
 import {Copyright} from './components/Copyright';
 import Works from './components/Works';
 import Schools from './components/Schools';
-/**
- * COMPONENT
- */
+
+import {Box} from "@mui/material";
+import {
+  createTheme,
+  responsiveFontSizes,
+  ThemeProvider,
+} from "@mui/material/styles";
+
+let theme = createTheme({
+  typography: {
+    fontFamily: "granville, serif",
+  },
+});
+
+theme = responsiveFontSizes(theme);
+
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData()
@@ -21,18 +34,19 @@ class Routes extends Component {
   render() {
 
     return (
-      <div>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/home" component={Home} />
-          <Route exact path='/edit/profile/:id' component={UpdateProfile}/>
-          <Route exact path="/works" component={Works}/>
-          <Route path="/works/:id" component={UpdateWork}/>
-        </Switch>
-          
-        {/*<Schools/>*/}
-        <Copyright/>
-      </div>
+      <ThemeProvider theme={theme}>
+        <div>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/home" component={Home} />
+            <Route exact path='/profile/:id' component={UpdateProfile}/>
+            <Route exact path="/works" component={Works}/>
+            <Route path="/works/:id" component={UpdateWork}/>
+            <Route path="/schools" component={Schools}/>
+          </Switch>
+          <Copyright/>
+        </div>
+       </ThemeProvider>
     )
   }
 }

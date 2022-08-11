@@ -12,7 +12,7 @@ const User = db.define('user', {
     type: Sequelize.TEXT,
   },
   img: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
   },
   src: {
     type: Sequelize.STRING

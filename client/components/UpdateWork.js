@@ -2,21 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { updateWork, deleteWork } from "../store";
-import { Button } from "@mui/material";
-
-import {
-  createTheme,
-  responsiveFontSizes,
-  ThemeProvider,
-} from "@mui/material/styles";
-
-let theme = createTheme({
-  typography: {
-    fontFamily: "granville, serif",
-  },
-});
-
-theme = responsiveFontSizes(theme);
+import { Button, Box, FormLabel, Avatar } from "@mui/material";
 
 class UpdateWork extends Component {
   constructor(props) {
@@ -26,13 +12,24 @@ class UpdateWork extends Component {
       name: this.props.work.name ? this.props.work.name : "",
       location: this.props.work.location ? this.props.work.location : "",
 			title: this.props.work.title ? this.props.work.title : "",
-      img: this.props.work.img ? this.props.work.img : "",
-			startDate: this.props.work.startDate ? this.props.work.startDate : "",
-			endDate: this.props.work.endDate ? this.props.work.endDate : "",
+			startDate: this.props.work.startDate ? this.props.work.startDate.slice(0,10) : "",
+			endDate: this.props.work.endDate ? this.props.work.endDate.slice(0,10) : "",
+			img: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+	componentDidMount() {
+		this.el.addEventListener('change', (ev)=> {
+			const file = ev.target.files[0]
+			const reader = new FileReader()
+			reader.addEventListener('load', () => {
+				this.setState({img:reader.result})
+			})
+			reader.readAsDataURL(file)
+		})
+	}
 
   componentDidUpdate(prevProps) {
     if (!prevProps.work.id && this.props.work.id) {
@@ -66,68 +63,73 @@ class UpdateWork extends Component {
 
     return (
       <div>
-        <ThemeProvider theme={theme}>
-          <form onSubmit={handleSubmit}>
-						<input 	
-							type="file"
-							onChange={handleChange}
-							name="img"
-							required
-							/>
-            <input
-              name="name"
-              value={name ?? ""}
-              onChange={handleChange}
-              color="inherit"
-              autoFocus={true}
-              required
-              type="text"
-            />
-            <input
-              onChange={handleChange}
-              value={title ?? ""}
-              label="Title"
-              name="title"
-              color="inherit"
-              required
-            />
-            <input
-              onChange={handleChange}
-              value={location ?? ""}
-              label="Location"
-              name="location"
-              required
-            />
-						<input
-              onChange={handleChange}
-							type='date'
-              value={startDate ?? ""}
-              label="StartDate"
-              name="startDate"
-              required
-            />
-						<input
-              onChange={handleChange}
-							type='date'
-              value={endDate ?? ""}
-              label="EndDate"
-              name="endDate"
-              required
-            />
-            <Button type="submit" color="inherit">
-              Save
-            </Button>
-            <Button>
-              <Link to="/">Cancel</Link>
-            </Button>
-						<Button
-							onClick={() => this.props.deleteWork(this.props.work)}
-							style={{ color: "red" }}
-            >
-            	X
-            </Button>
-          </form>
-        </ThemeProvider>
+					<Box maxWidth="lg" sx={{justifyContent: 'center', my: 10, mx: 'auto'}}>
+							<form onSubmit={handleSubmit}>
+							{img ? <Avatar sx={{ width: 50, height: 50}} alt={name} src={img}></Avatar> : null}
+							<FormLabel>Image</FormLabel>
+								<input 	
+									type="file"
+									onChange={handleChange}
+									ref={el => this.el = el}
+									/>
+							<FormLabel>Name</FormLabel>
+								<input
+									name="name"
+									value={name ?? ""}
+									onChange={handleChange}
+									color="inherit"
+									autoFocus={true}
+									autoComplete="on"
+									type="text"
+								/>
+							<FormLabel>Title</FormLabel>
+								<input
+									onChange={handleChange}
+									value={title ?? ""}
+									label="Title"
+									name="title"
+									color="inherit"
+								/>
+							<FormLabel>Location</FormLabel>
+								<input
+									onChange={handleChange}
+									value={location ?? ""}
+									label="Location"
+									name="location"
+									
+								/>
+							<FormLabel>Start Date</FormLabel>
+								<input
+									onChange={handleChange}
+									type='text'
+									value={startDate ?? ""}
+									label="StartDate"
+									name="startDate"
+									
+								/>
+							<FormLabel>End Date</FormLabel>
+								<input
+									onChange={handleChange}
+									type='text'
+									value={endDate ?? ""}
+									label="EndDate"
+									name="endDate"
+								
+								/>
+								<Button type="submit" color="inherit" disabled={!name || !title || !endDate}>
+									Save
+								</Button>
+								<Button
+									onClick={() => this.props.deleteWork(this.props.work)}
+									style={{ color: "red" }}
+								>
+									Delete
+								</Button>
+								<Button>
+									<Link to="/works">Cancel</Link>
+								</Button>
+							</form>
+					</Box>
       </div>
     );
   }
@@ -147,7 +149,7 @@ const mapDispatch = (dispatch, { history }) => {
       dispatch(updateWork(work, history));
     },
 		deleteWork: (work) => {
-			dispatch(deleteWork(work))
+			dispatch(deleteWork(work, history))
 		}
   };
 };

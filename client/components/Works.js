@@ -10,38 +10,25 @@ import Button from "@mui/material/Button";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Avatar from '@mui/material/Avatar';
-import {
-  createTheme,
-  responsiveFontSizes,
-  ThemeProvider,
-} from "@mui/material/styles";
-
-let theme = createTheme({
-  typography: {
-    fontFamily: "granville, serif",
-  },
-});
-
-theme = responsiveFontSizes(theme);
 
 const Works = ({ works }) => {
   return (
-    <ThemeProvider theme={theme}>
+		<>
       <Grid
         container
         sx={{
-          my: 4,
+          my: 2,
           justifyContent: "center",
           flexDirection: { xs: "column", md: "row" },
         }}
       >
-        <Box sx={{ mx: 8, my: 2, textAlign: { xs: "center"} }}>
+        <Box sx={{ mx: 8, my: 1, textAlign: { xs: "center"} }}>
           <Typography variant="h2" sx={{ fontWeight: "500" }}>
             I enjoyed working on challenge projects
           </Typography>
         </Box>
-        <Grid container spacing={4} maxWidth="lg" sx={{justifyContent: {xs:'center', md: 'left'}, my: 3}}>
-          {works.map((work) => (
+        <Grid container spacing={4} maxWidth="lg" sx={{justifyContent: {xs:'center', md: 'left'}}}>
+          {works?.map((work) => (
             <Grid item key={work.id} xs={8} sm={6} md={4}>
               <Card
                 sx={{
@@ -79,11 +66,12 @@ const Works = ({ works }) => {
         </Grid>
       </Grid>
 			<Route exact path="/works/:id/edit" component={UpdateWork}/>
-    </ThemeProvider>
+		</>
   );
 };
 
 const mapState = (state) => {
+console.log(state)
   return {
     works: state.works,
   };

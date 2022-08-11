@@ -2,21 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { updateUser } from "../store";
-import { Button } from "@mui/material";
+import { Button, Grid, Box, Avatar, FormLabel } from "@mui/material";
 
-import {
-  createTheme,
-  responsiveFontSizes,
-  ThemeProvider,
-} from "@mui/material/styles";
-
-let theme = createTheme({
-  typography: {
-    fontFamily: "granville, serif",
-  },
-});
-
-theme = responsiveFontSizes(theme);
 
 class UpdateProfile extends Component {
   constructor(props) {
@@ -30,6 +17,17 @@ class UpdateProfile extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  //componentDidMount() {
+	//	this.el.addEventListener('change', (ev)=> {
+	//		const file = ev.target.files[0]
+	//		const reader = new FileReader()
+	//		reader.addEventListener('load', () => {
+	//			this.setState({img:reader.result})
+	//		})
+	//		reader.readAsDataURL(file)
+	//	})
+	//}
 
   componentDidUpdate(prevProps) {
     if (!prevProps.user.id && this.props.user.id) {
@@ -60,41 +58,44 @@ class UpdateProfile extends Component {
 
     return (
       <div>
-        <ThemeProvider theme={theme}>
-          <form onSubmit={handleSubmit}>
-            <input
-              name="name"
-              value={name ?? ""}
-              onChange={handleChange}
-              color="inherit"
-              autoFocus={true}
-              required
-              type="text"
-            />
-            <textarea
-              onChange={handleChange}
-              value={bio ?? ""}
-              label="Bio"
-              name="bio"
-              color="inherit"
-              rows="10"
-              required
-            />
-            <input
-              onChange={handleChange}
-              value={img ?? ""}
-              label="Image link"
-              name="image_url"
-              required
-            />
-            <Button type="submit" color="inherit">
-              Save
-            </Button>
-            <Button>
-              <Link to="/home">Cancel</Link>
-            </Button>
-          </form>
-        </ThemeProvider>
+          <Box maxWidth="lg" sx={{justifyContent: 'center', my: 10, mx: 'auto'}}>
+            <form onSubmit={handleSubmit}>
+              <FormLabel>Image</FormLabel>
+              <input 
+                type='file'
+                onChange={handleChange}
+                name="img"
+                ref={el => this.el = el}
+                required
+              />
+              <FormLabel>Name</FormLabel>
+              <input
+                name="name"
+                value={name ?? ""}
+                onChange={handleChange}
+                color="inherit"
+                autoFocus={true}
+                required
+                type="text"
+              />
+              <FormLabel>Description</FormLabel>
+              <textarea
+                onChange={handleChange}
+                value={bio ?? ""}
+                label="Bio"
+                name="bio"
+                color="inherit"
+                rows="10"
+                required
+              />
+              <Button type="submit" color="inherit">
+                Save
+              </Button>
+              <Button>
+                <Link to="/">Cancel</Link>
+              </Button>
+            </form>
+          </Box>
       </div>
     );
   }

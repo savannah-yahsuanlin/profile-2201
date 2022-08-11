@@ -3,6 +3,7 @@ const toCache = [
   '/',
 	'/index.html',
 	'/js/status.js',
+  '/style.css'
 ];
 
 
