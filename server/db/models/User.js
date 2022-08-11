@@ -16,6 +16,9 @@ const User = db.define('user', {
   },
   src: {
     type: Sequelize.STRING
+  },
+  linkedin: {
+    type: Sequelize.STRING
   }
 })
 

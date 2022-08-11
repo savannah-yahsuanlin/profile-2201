@@ -35,7 +35,7 @@ export const Home = (props) => {
         elevation={0}
         sx={{
           backgroundColor: "inherit",
-          my: 6,
+          my: 2,
           justifyContent: "center",
           flexDirection: { xs: "column", md: "row" },
         }}
@@ -100,7 +100,7 @@ export const Home = (props) => {
                   {ele.bio}
                 </Typography>
               )}
-              <Button size="small"><Link to={`${ele.id}/edit`}>Edit</Link></Button>
+              <Button size="small"><Link to={`/edit/profile/${ele.id}`}>Edit</Link></Button>
             </Box>
           ))}
         </Box>

@@ -10,3 +10,13 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+
+router.put('/:id', async(req, res, next) => {
+	try {
+		const school = await School.findByPk(req.params.id)
+		const updated = await school.update(req.body)
+		res.json(updated)
+	} catch (error) {
+		next(error)
+	}
+})

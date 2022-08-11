@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { updateUser } from "../store";
-import { Button, Box, Stack } from "@mui/material";
+import { Button } from "@mui/material";
 
 import {
   createTheme,
@@ -91,7 +91,7 @@ class UpdateProfile extends Component {
               Save
             </Button>
             <Button>
-              <Link to="/">Cancel</Link>
+              <Link to="/home">Cancel</Link>
             </Button>
           </form>
         </ThemeProvider>

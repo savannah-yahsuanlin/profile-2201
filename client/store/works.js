@@ -29,7 +29,7 @@ export const updateWork = (work, history) => {
       type: UPDATE_WORK,
       product: updatedWork,
     });
-    history.push("/works");
+    history.push("/");
   };
 };
 
@@ -40,13 +40,13 @@ export const deleteWork = (work, history) => {
       type: DELETE_WORK,
       work,
     });
-    history.push("/works");
+    history.push("/");
   };
 };
 
 export const createWork = (work) => {
 	return async dispatch => {
-		const newWork = (await axios.post('/api/works', works)).data
+		const newWork = (await axios.post('/api/works', work)).data
 		dispatch({
 			type: CREATE_WORK,
 			work: newWork

@@ -14,10 +14,10 @@ const theme = createTheme({
 export const Copyright = () => {
 	return (
 		<ThemeProvider theme={theme}>
-		  <Box sx={{ p: 6 }} component="footer">
+		  <Box sx={{ p: 4 }} component="footer">
 				 <Typography variant="body2" color="inherit" align="center">
 						{'Copyright © '}
-						<Link color="inherit" href="http://localhost:8080" style={{textDecoration:'none', cursor: 'pointer'}}>
+						<Link color="inherit" href="" style={{textDecoration:'none', cursor: 'pointer'}}>
 							Savannah Lin
 						</Link>{' '}
 						{new Date().getFullYear()}

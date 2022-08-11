@@ -1,16 +1,32 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import {Box} from "@mui/material";
+import {
+  createTheme,
+  responsiveFontSizes,
+  ThemeProvider,
+} from "@mui/material/styles";
+
+let theme = createTheme({
+  typography: {
+    fontFamily: "granville, serif",
+  },
+});
+
+theme = responsiveFontSizes(theme);
+
 
 const Navbar = (props) => (
   <div>
-      <h1>Profile</h1>
+    <ThemeProvider theme={theme}>
       <nav>
-          <div>
-            <Link to="/home">Home</Link>
-          </div>
+        <Box sx={{ display: "flex", justifyContent: "space-evenly", mt: 2}}>
+          <Link to="/home">Home</Link>
+          <Link to="/works">Works</Link>
+        </Box>
       </nav>
-      <hr />
+    </ThemeProvider>
   </div>
 )
 

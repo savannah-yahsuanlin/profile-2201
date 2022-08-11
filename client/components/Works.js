@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-
+import {Link, Route} from 'react-router-dom'
+import UpdateWork from './UpdateWork';
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -29,7 +30,7 @@ const Works = ({ works }) => {
       <Grid
         container
         sx={{
-          my: "15%",
+          my: 4,
           justifyContent: "center",
           flexDirection: { xs: "column", md: "row" },
         }}
@@ -70,13 +71,14 @@ const Works = ({ works }) => {
 								</Box>
 							</CardContent>
 							<CardActions>
-								<Button size="small">Edit</Button>
+								<Button size="small"><Link to={`/works/${work.id}/edit`}>Edit</Link></Button>
 							</CardActions>
               </Card>
             </Grid>
           ))}
         </Grid>
       </Grid>
+			<Route exact path="/works/:id/edit" component={UpdateWork}/>
     </ThemeProvider>
   );
 };
