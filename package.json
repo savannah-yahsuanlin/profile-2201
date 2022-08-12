@@ -46,7 +46,6 @@
     "chai": "^4.2.0",
     "css-loader": "^6.7.1",
     "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.12.1",
     "esm": "^3.2.25",
     "mocha": "^6.2.3",
     "nodemon": "^2.0.19",

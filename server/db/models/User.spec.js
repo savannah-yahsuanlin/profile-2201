@@ -13,7 +13,7 @@ describe('User model', () => {
       expect(user.length).to.equal(1)
     })
     it('username is Savannah', () => {
-      expect(user[0].dataValues.name).to.equal('Savannah')
+      expect(user[0].dataValues.name).to.equal('Savannah Lin')
     })
     it('user has bio info', ()=> {
       expect(user[0].dataValues.bio).to.be.ok
