@@ -22,5 +22,5 @@ describe('School routes', () => {
       expect(res.body[0].name).to.be.equal('Fullstack Academy')
       })
     })
-}) // end describe('User routes')
+}) 
  

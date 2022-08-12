@@ -9,7 +9,7 @@ const UPDATE_USER = "UPDATE_USER";
 /**
  * ACTION CREATORS
  */
-const _loadUser = (users) => {
+export const _loadUser = (users) => {
   return {
     type: LOAD_USERS,
     users,
@@ -26,6 +26,7 @@ export const loadUsers = () => {
     dispatch(_loadUser(users));
   };
 };
+
 export const updateUser = (user, history) => {
   return async (dispatch) => {
     const updateUser = (await axios.put(`/api/users/${user.id}`, user)).data;
@@ -37,6 +38,16 @@ export const updateUser = (user, history) => {
   };
 };
 
+export const user = (state = [], action) => {
+  switch (action.type) {
+    case LOAD_USERS:
+      return action.users;
+    case UPDATE_USER:
+      return state.map((user) => user.id === action.user.id ? action.user : user);
+    default:
+      return state;
+  }
+}
 
 /**
  * REDUCER
@@ -51,3 +62,5 @@ export default function (state = [], action) {
       return state;
   }
 }
+
+

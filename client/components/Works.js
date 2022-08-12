@@ -29,7 +29,7 @@ const Works = ({ works }) => {
           </Typography>
         </Box>
         <Grid container spacing={4} maxWidth="lg" sx={{justifyContent: {xs:'center', md: 'left'}}}>
-          {works?.map((work) => (
+          {works.map((work) => (
             <Grid item key={work.id} xs={8} sm={6} md={4}>
               <Card
                 sx={{
@@ -71,9 +71,9 @@ const Works = ({ works }) => {
   );
 };
 
-const mapState = (state) => {
+const mapState = ({works}) => {
   return {
-    works: state.works,
+    works
   };
 };
 

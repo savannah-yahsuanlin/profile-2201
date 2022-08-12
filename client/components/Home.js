@@ -94,9 +94,9 @@ export const Home = ({ users }) => {
   );
 };
 
-const mapState = (state) => {
+const mapState = ({users}) => {
   return {
-    users: state.users,
+    users
   };
 };
 

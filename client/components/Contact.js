@@ -18,7 +18,7 @@ export const Contact = () => {
 							Please feel free to download my resume
 						</Typography>
 						<Link color="inherit" href="http://localhost:8080/resume.pdf" style={{textDecoration:'none', cursor: 'pointer', fontWeight:'700'}} download>
-							Point me!!
+							Click me!!
 						</Link>
 					</Typography>
       </Box>

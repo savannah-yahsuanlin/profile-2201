@@ -55,9 +55,11 @@ class Routes extends Component {
 /**
  * CONTAINER
  */
-const mapState = state => {
+const mapState = ({users, works, schools}) => {
   return {
-    state
+    users, 
+    works, 
+    schools
   }
 }
 

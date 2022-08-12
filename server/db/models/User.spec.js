@@ -22,4 +22,4 @@ describe('User model', () => {
       expect(user[0].dataValues.img).to.be.ok
     })
   })
-}) // end describe('User model')
+}) 

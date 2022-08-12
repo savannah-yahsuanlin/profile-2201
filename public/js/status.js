@@ -6,6 +6,3 @@ function init() {
     statusElem.innerHTML = 'offline'
   }
 }
-
-
-{/*<span><b class="page-status">online</b></span>*/}

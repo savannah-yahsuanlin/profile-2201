@@ -22,5 +22,5 @@ describe('User routes', () => {
       expect(res.body[0].name).to.be.equal('Savannah')
       })
     })
-}) // end describe('User routes')
+}) 
  

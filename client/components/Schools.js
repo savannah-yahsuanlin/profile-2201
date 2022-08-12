@@ -42,9 +42,9 @@ const Schools = ({ schools }) => {
   );
 };
 
-const mapState = (state) => {
+const mapState = ({schools}) => {
   return {
-    schools: state.schools,
+    schools
   };
 };
 

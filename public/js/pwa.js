@@ -1,5 +1,6 @@
-document.addEventListener('DOMContentLoaded', init, false);
-function init() {
+document.addEventListener('DOMContentLoaded', pwa, false);
+
+function pwa() {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/service-worker.js')
       .then((reg) => {
@@ -9,3 +10,4 @@ function init() {
       });
   }
 }
+

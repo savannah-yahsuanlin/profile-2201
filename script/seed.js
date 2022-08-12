@@ -10,9 +10,8 @@ async function seed() {
   const users = await Promise.all([
     User.create({ 
       name: 'Savannah Lin', 
-      bio: "I hold 3+ years of experience for helping startups or small-sized business designing and building websites. I use React, Javascript, CSS, HTML5, SASS, and other tools. I’m a master at converting mockups into intuitive, user-friendly interfaces and am familiar with many code delivery methodologies. In addition, I have a consistent, demonstrated track record of developing and maintaining web performance and responsive products that achieve concrete business objectives. I welcome the chance to discuss my experience with you.",
-      img: "me.png",
-      linkedin: 'www.linkedin.com/in/zi-yuanlin'
+      bio: "I hold 3+ years of experience for helping startups or small-sized business designing and building websites. I use React, Javascript, CSS, HTML5, SASS, and other tools. I’m a master at converting mockups into intuitive, user-friendly interfaces and am familiar with code delivery methodology. In addition, I have a consistent, demonstrated track record of developing and maintaining web performance and responsive products that achieve concrete business objectives. I welcome the chance to discuss my experience with you.",
+      img: "me.png"
     }),
   ])
 
