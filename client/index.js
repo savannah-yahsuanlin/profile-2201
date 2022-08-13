@@ -5,7 +5,8 @@ import {Router} from 'react-router-dom'
 import history from './history'
 import store from './store'
 import App from './App'
-import serviceWorker from '../public/service-worker'
+
+
 
 ReactDOM.render(
   <Provider store={store}>
@@ -16,4 +17,12 @@ ReactDOM.render(
   document.getElementById('app')
 )
 
-serviceWorker()
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js')
+      .then((reg) => {
+        console.log('Service worker registered -->', reg);
+      }, (err) => {
+        console.error('Service worker not registered -->', err);
+      });
+  }

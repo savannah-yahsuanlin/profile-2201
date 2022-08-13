@@ -33,6 +33,7 @@
     "loadash": "^1.0.0",
     "morgan": "^1.9.1",
     "pg": "^8.5.1",
+    "react-scripts": "^5.0.1",
     "sequelize": "^6.3.5"
   },
   "devDependencies": {
