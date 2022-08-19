@@ -47,6 +47,7 @@ class UpdateWork extends Component {
   handleSubmit(ev) {
     ev.preventDefault();
     this.props.updateWork(this.state);
+		this.setState({img: ' '})
   }
 
   handleChange(ev) {
@@ -145,8 +146,8 @@ const mapState = (state, { match }) => {
 
 const mapDispatch = (dispatch, { history }) => {
   return {
-    updateWork: (work) => {
-      dispatch(updateWork(work, history));
+    updateWork: (work, img) => {
+      dispatch(updateWork(work, img, history));
     },
 		deleteWork: (work) => {
 			dispatch(deleteWork(work, history))

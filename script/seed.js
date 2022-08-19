@@ -23,7 +23,7 @@ async function seed() {
       name: "Drone Forward",
       location: 'Boston',
       title: "Web developer",
-      img: "df.webp",
+      img: "https://images.unsplash.com/photo-1584441405886-bc91be61e56a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1030&q=80",
       startDate: "2021-02",
       endDate: "2022-03",
       link: "https://www.droneforwardinc.com/"
@@ -32,7 +32,7 @@ async function seed() {
       name: "STAT",
       location: 'Boston',
       title: "Front end web developer",
-      img: "stat.jpeg",
+      img: "https://images.unsplash.com/photo-1602934445884-da0fa1c9d3b3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGxvZ298ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60",
       startDate: "2019-12",
       endDate: "2021-08",
       link: "https://www.statnews.com/"
@@ -41,7 +41,7 @@ async function seed() {
       name: "MĀSK Skincare",
       location: 'New York',
       title: "Web developer and designer",
-      img: "mask.jpeg",
+      img: "https://images.unsplash.com/photo-1602934445884-da0fa1c9d3b3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGxvZ298ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60",
       startDate: "2019-06",
       endDate: "2019-11",
       link: "https://maskskincare.com/"
@@ -50,7 +50,7 @@ async function seed() {
       name: "IREMIA",
       location: 'New York',
       title: "Web developer and designer",
-      img: "hp.jpeg",
+      img: "https://images.unsplash.com/photo-1602934445884-da0fa1c9d3b3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGxvZ298ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60",
       startDate: "2019-01",
       endDate: "2019-06",
       link: "https://www.iremiacbd.co/"
@@ -59,7 +59,7 @@ async function seed() {
       name: "SMCAC",
       location: 'Boston',
       title: "Web developer and designer",
-      img: "",
+      img: "https://images.unsplash.com/photo-1602934445884-da0fa1c9d3b3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGxvZ298ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60",
       startDate: "2018-04",
       endDate: "2019-05",
       link: "https://smcac.org/default.php"

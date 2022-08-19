@@ -3,7 +3,7 @@ const { models: { Work }} = require('../db')
 
 router.get('/', async (req, res, next) => {
   try {
-    const works = await Work.findAll()
+    let works = await Work.findAll()
     res.json(works)
   } catch (err) {
     next(err)
@@ -11,11 +11,32 @@ router.get('/', async (req, res, next) => {
 })
 
 
-router.put('/:id', async(req, res, next) => {
+router.get('/:id', async(req, res, next) => {
 	try {
 		const work = await Work.findByPk(req.params.id)
-		const updated = await work.update(req.body)
-		res.json(updated)
+		res.json(work)
+	} catch (error) {
+		next(error)
+	}
+})
+
+router.get('/:id/img', async(req, res, next) => {
+  try {
+    const work = await Work.findByPk(req.params.id)
+		const buffer = Buffer.from(work.img.split(',')[1], 'base64')
+		res.writeHead(200, {
+			'Content-Type': 'image/png'
+		})
+    res.end(buffer)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.put('/:id/edit', async(req, res, next) => {
+	try {
+		const work = await Work.findByPk(req.params.id)
+		res.json(await work.update(req.body))
 	} catch (error) {
 		next(error)
 	}
@@ -23,7 +44,7 @@ router.put('/:id', async(req, res, next) => {
 
 router.delete('/:id', async(req, res, next) => {
 	try {
-		const work = await Work.findByPk(req.params.id);
+		const work = await Work.findByPk(req.params.id);		
     await work.destroy();
     res.send(work);
 	} catch (error) {

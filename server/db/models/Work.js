@@ -23,7 +23,13 @@ const Work = db.define('work', {
 	},
 	link: {
 		type: Sequelize.STRING,
-	}
+	},
+  hasImg: {
+    type: Sequelize.VIRTUAL,
+    get: function() {
+      return !!this.img
+   }
+  }
 })
 
 module.exports = Work

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect}from "react";
 import { connect } from "react-redux";
 import {Link, Route} from 'react-router-dom'
 import UpdateWork from './UpdateWork';
@@ -10,9 +10,11 @@ import Button from "@mui/material/Button";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Avatar from '@mui/material/Avatar';
+import {loadWorks} from "../store";
 
 const Works = ({ works }) => {
 
+  if (!works.length) return null
   return (
 		<>
       <Grid
@@ -29,7 +31,7 @@ const Works = ({ works }) => {
           </Typography>
         </Box>
         <Grid container spacing={4} maxWidth="lg" sx={{justifyContent: {xs:'center', md: 'left'}}}>
-          {works.map((work) => (
+          {works?.map((work) => (
             <Grid item key={work.id} xs={8} sm={6} md={4}>
               <Card
                 sx={{
@@ -44,7 +46,8 @@ const Works = ({ works }) => {
 									<Typography gutterBottom variant="h4" sx={{fontWeight: '700', flexGrow: 1}}>
 										{work.name}
 									</Typography>
-									<Avatar sx={{ width: 50, height: 50}} alt={work.name} src={work.img}></Avatar>
+                  {work.hasImg ? <Avatar sx={{ width: 50, height: 50}} alt={work.name} src={`/api/works/${work.id}/img`}></Avatar> : <Avatar sx={{ width: 50, height: 50}} alt={work.name} src={work.img}></Avatar>}
+									
 								</Box>
 								<Typography gutterBottom variant="h5" sx={{ fontWeight: "300" }}>
 									{work.location}
@@ -77,4 +80,12 @@ const mapState = ({works}) => {
   };
 };
 
-export default connect(mapState)(Works);
+const mapDispatch = (dispatch) => {
+  return {
+    loadWorks: () => {
+      dispatch(loadWorks())
+    }
+  }
+}
+
+export default connect(mapState, mapDispatch)(Works);

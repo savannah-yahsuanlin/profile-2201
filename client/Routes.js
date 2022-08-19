@@ -1,14 +1,14 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {withRouter, Route, Switch, Router} from 'react-router-dom'
+import {withRouter, Route, Switch} from 'react-router-dom'
 import Home from './components/Home';
 import UpdateProfile from './components/UpdateProfile';
 import UpdateWork from './components/UpdateWork';
-import {loadUsers, loadWorks, loadSchools} from './store'
 import {Copyright} from './components/Copyright';
 import Works from './components/Works';
 import Schools from './components/Schools';
 import {Contact} from './components/Contact';
+import {loadUsers, loadWorks, loadSchools} from './store'
 
 import {
   createTheme,
@@ -39,8 +39,8 @@ class Routes extends Component {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/home" component={Home} />
-            <Route exact path='/profile/:id' component={UpdateProfile}/>
-            <Route exact path="/works" component={Works}/>
+            <Route path='/profile/:id' component={UpdateProfile}/>
+            <Route path="/works" component={Works}/>
             <Route path="/works/:id" component={UpdateWork}/>
             <Route path="/schools" component={Schools}/>
             <Route path='/contact' component={Contact}/>
@@ -55,11 +55,9 @@ class Routes extends Component {
 /**
  * CONTAINER
  */
-const mapState = ({users, works, schools}) => {
+const mapState = (state) => {
   return {
-    users, 
-    works, 
-    schools
+    state
   }
 }
 
